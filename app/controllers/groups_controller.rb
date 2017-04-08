@@ -24,7 +24,6 @@ class GroupsController < ApplicationController
     if @group.save
       current_user.join!(@group)
       redirect_to groups_path
-
     else
       render :new
     end
@@ -70,7 +69,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def fine_group_and_check_permission
+  def find_group_and_check_permission
     @group = Group.find(params[:id])
 
     if current_user != @group.user
